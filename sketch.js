@@ -64,7 +64,7 @@ function setup() {
 
 // Very simple, sets the background color and calls your state machine function
 function draw() {
-  background(0,100,100);
+  background(50,150,150);
 
   // will call your state machine function
   drawFunction();
@@ -74,42 +74,47 @@ function draw() {
 
 //-- drawOne() will draw the image at index 0 from the array
 drawOne = function() {
-   image(images[0],width/2, height/2);
+  background(200,200,100);
+  image(images[0],width/2, height/2);
 
-   fill(0,0,0);
-   text("Feeling #1: Restless", width/2, height - gTextOffset);
+  fill(0,0,0);
+  text("RESTLESS", width/2, height - gTextOffset);
 }
 
 //-- drawTwo() will draw the image at index 1 from the array
 drawTwo = function() {
-   image(images[1],width/2, height/2);
+  background(0,150,150);
+  image(images[1],width/2, height/2 - 20);
 
-   fill(240,120,0);
-   text("Feeling #2: Mellow", width/2, height - gTextOffset);
+  fill(140,200,0);
+  text("MELLOW", width/2, height - gTextOffset);
 }
 
 //-- drawOne() will draw the image at index 2 from the array
 drawThree = function() {
-   image(images[2],width/2, height/2);
+  background(250,150,120);
+  image(images[2],width/2, height/2);
 
-   fill(40,230,120);
-   text("Feeling #3: Excited", width/2, height - gTextOffset);
+  fill(80,120,150);
+  text("EXCITED", width/2, height - gTextOffset);
 }
 
 //-- drawOne() will draw the image at index 3 from the array
 drawFour = function() {
-   image(images[3],width/2, height/2);
+  background(100,200,100);
+  image(images[3],width/2, height/2);
 
-   fill(255,255,178);
-   text("Feeling #4: Happy", width/2, height - gTextOffset);
+  fill(255,255,178);
+  text("HAPPY", width/2, height - gTextOffset);
 }
 
 //-- drawOne() will draw the image at index 4 from the array
 drawFive = function() {
-   image(images[4],width/2, height/2);
+  background(30,80,130);
+  image(images[4],width/2, height/2 - 30);
 
-   fill(230,50,50);
-   text("Feeling #5: Anxious ", width/2, height - gTextOffset);
+  fill(200,80,50);
+  text("ANXIOUS ", width/2, height - gTextOffset);
 }
 
 
