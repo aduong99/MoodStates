@@ -1,19 +1,10 @@
-## Simple State Machine
-#### by Scott Kildall
+## Mood State
+#### by An Duong
 
 
 ### Overview
-This is a template for a simple state machine that goes between five states
+This is project showcasing five moods felt during quarantine (this semester). 
 
-
-### Modifying the Template
-
-(1) Add your own PNG files in the assets folder. Make sure they match the names ***exactly*** of the existing PNGs.
-
-(2) Add custom drawing code to drawOne(), drawTwo(), drawThree(), drawFour(), drawFive()
-
-(3) You can add your own interfaces - keys, mouse events, etc in the Interfaces section
-
-Don't change anything else! 
 
 ### How it works
+Press on a number key (1-5) and images will be shown in correlation to the number. 
