@@ -47,6 +47,7 @@ function preload() {
   images[2] = loadImage('assets/excited.png');
   images[3] = loadImage('assets/happy.png');
   images[4] = loadImage('assets/anxious.png');
+  images[5] = loadImage('assets/splash.png')
 }
 
 // Center drawing, drawFunction will be one for default
@@ -59,7 +60,7 @@ function setup() {
   textSize(24);
 
   // set to one for startup
-  drawFunction = drawOne;
+  drawFunction = drawSplash;
 }
 
 // Very simple, sets the background color and calls your state machine function
@@ -117,24 +118,44 @@ drawFive = function() {
   text("ANXIOUS ", width/2, height - gTextOffset);
 }
 
+//-- drawSplash() will draw the image at index 4 from the array
+drawSplash = function() {
+   image(images[5],width/2, height/2);
+}
+
 
 //========= TEMPLATE: add or change interface functions, as you like =========
 
 // Change the drawFunction variable based on your interaction
 function keyTyped() {
+  if( drawFunction === drawSplash ) {
+    return;
+  }
+
   if( key === '1' ) {
-  	drawFunction = drawOne;
+    drawFunction = drawOne;
   }
   else if( key === '2' ) {
-  	drawFunction = drawTwo;
+    drawFunction = drawTwo;
   }
   else if( key === '3' ) {
-  	drawFunction = drawThree;
+    drawFunction = drawThree;
   }
   else if( key === '4' ) {
-  	drawFunction = drawFour;
+    drawFunction = drawFour;
   }
   else if( key === '5' ) {
-  	drawFunction = drawFive;
+    drawFunction = drawFive;
+  }
+
+  else if( key === 's' ) {
+    drawFunction = drawSplash;
+  }
+}
+
+function mousePressed() {
+  // only change state if we are in splash screen
+  if( drawFunction == drawSplash ) {
+    drawFunction = drawOne;
   }
 }
