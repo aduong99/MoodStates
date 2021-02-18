@@ -43,7 +43,7 @@ var gTextOffset = 20;
 var strings = [];
 var midX;
 var startY;
-var lineHeight = 24;
+var lineHeight = 50;
 
 // load all images into an array
 function preload() {
@@ -65,10 +65,11 @@ function setup() {
   // Center our drawing objects
   imageMode(CENTER);
   textAlign(CENTER);
-  textSize(24);
+  textSize(32);
+  textFont('Futura');
 
-  // set to one for startup
-  drawFunction = drawSplash;
+  // set to wave for startup
+  drawFunction = drawWave;
 
 }
 
@@ -127,9 +128,11 @@ drawFive = function() {
   text("ANXIOUS ", width/2, height - gTextOffset);
 }
 
-//-- drawSplash() will draw the image at index 4 from the array
-drawSplash = function() {
-   image(images[5],width/2, height/2);
+//-- drawWave() will draw the image at index 4 from the array
+drawWave = function() {
+
+  image(images[5],width/2, height/2);
+  drawTitle();
 }
 
 drawInstructions = function() {
@@ -146,15 +149,29 @@ drawInstructions = function() {
 
 
 function loadStringArray(){
-  strings[0] = "Hello";
-  strings[1] = "To begin";
-  strings[2] = "Click anywhere with your mouse! ";
-  strings[3] = "To go through different images";
-  strings[4] = "Press key numbers: 1-5";
-  strings[5] = "To go back to the first page";
-  strings[6] = "Press key 's'";
-  strings[7] = "’To get back to this instructions page";
-  strings[8] = "Press key 'i'";
+  strings[0] = "☆     hello     ☆ ";
+  strings[1] = "to begin";
+  strings[2] = "click anywhere with your mouse! ";
+  strings[3] = "to go through different images";
+  strings[4] = "press key numbers: 1-5";
+  strings[5] = "to go back to the first page";
+  strings[6] = "press key 's'";
+  strings[7] = "to get back to this instructions page";
+  strings[8] = "press key 'i'";
+}
+
+
+drawTitle = function() {
+
+  fill(128 + sin(frameCount*0.1) * 128);
+  if (mouseIsPressed) {
+    stroke(255);
+  }
+  else {
+    noStroke();
+  }
+  textSize(12 + (mouseX / width)*72);
+  text("how are you feeling ...? what's the mood...?", width/2, 150);
 }
 
 //========= TEMPLATE: add or change interface functions, as you like =========
@@ -178,7 +195,7 @@ function keyTyped() {
   }
 
   else if( key === 's' ) {
-    drawFunction = drawSplash;
+    drawFunction = drawWave;
   }
 
   else if( key === 'i' ) {
@@ -187,8 +204,9 @@ function keyTyped() {
 }
 
 function mousePressed() {
-  // only change state if we are in splash screen
-  if( drawFunction == drawSplash ) {
+  // only change state if we are in wave screen
+  // change to instructions page
+  if( drawFunction == drawWave ) {
     drawFunction = drawInstructions;
   }
 }
