@@ -1,6 +1,6 @@
 /***********************************************************************************
-	SimpleStateMachine - TEMPLATE
-	by Scott Kildall
+	Mood States
+  by An Duong
 
 	Template:
 
@@ -40,6 +40,11 @@ var drawFunction;
 // offset from bottom of screen
 var gTextOffset = 20;
 
+var strings = [];
+var midX;
+var startY;
+var lineHeight = 24;
+
 // load all images into an array
 function preload() {
   images[0] = loadImage('assets/restless.png');
@@ -47,12 +52,15 @@ function preload() {
   images[2] = loadImage('assets/excited.png');
   images[3] = loadImage('assets/happy.png');
   images[4] = loadImage('assets/anxious.png');
-  images[5] = loadImage('assets/splash.png')
+  images[5] = loadImage('assets/wave.png')
 }
 
 // Center drawing, drawFunction will be one for default
 function setup() {
   createCanvas(windowWidth, windowHeight);
+
+  midX = width/2;
+  startY = 60;
 
   // Center our drawing objects
   imageMode(CENTER);
@@ -61,6 +69,7 @@ function setup() {
 
   // set to one for startup
   drawFunction = drawSplash;
+
 }
 
 // Very simple, sets the background color and calls your state machine function
@@ -123,15 +132,33 @@ drawSplash = function() {
    image(images[5],width/2, height/2);
 }
 
+drawInstructions = function() {
+
+  fill(255);
+  for ( let i = 0; i < strings.length; i++ ){
+    text( strings[i], midX, startY + (i * lineHeight) );
+  }
+
+  loadStringArray();
+}
+
+
+function loadStringArray(){
+  strings[0] = "Hello";
+  strings[1] = "To begin";
+  strings[2] = "Click anywhere with your mouse! ";
+  strings[3] = "To go through different images";
+  strings[4] = "Press key numbers: 1-5";
+  strings[5] = "To go back to the first page";
+  strings[6] = "Press key 's'";
+  strings[7] = "’To get back to this instructions page";
+  strings[8] = "Press key 'i'";
+}
 
 //========= TEMPLATE: add or change interface functions, as you like =========
 
 // Change the drawFunction variable based on your interaction
 function keyTyped() {
-  if( drawFunction === drawSplash ) {
-    return;
-  }
-
   if( key === '1' ) {
     drawFunction = drawOne;
   }
@@ -151,11 +178,15 @@ function keyTyped() {
   else if( key === 's' ) {
     drawFunction = drawSplash;
   }
+
+  else if( key === 'i' ) {
+    drawFunction = drawInstructions;
+  }
 }
 
 function mousePressed() {
   // only change state if we are in splash screen
   if( drawFunction == drawSplash ) {
-    drawFunction = drawOne;
+    drawFunction = drawInstructions;
   }
 }
