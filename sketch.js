@@ -134,6 +134,8 @@ drawSplash = function() {
 
 drawInstructions = function() {
 
+  background(20, 90, 130);
+
   fill(255);
   for ( let i = 0; i < strings.length; i++ ){
     text( strings[i], midX, startY + (i * lineHeight) );
